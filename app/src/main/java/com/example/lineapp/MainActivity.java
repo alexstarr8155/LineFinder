@@ -11,6 +11,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Place p = new Place("s", "name");
+
         System.out.println("Test Push/Commit");
     }
 }
