@@ -19,6 +19,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listview_layout);
 
+        //FeedbackNotification notification = new FeedbackNotification();
+        FeedbackNotification.notify(this, "Text", 1);
+
         mListView = (ListView) findViewById(R.id.listView);
 
         ArrayList<Card> list = new ArrayList<>();

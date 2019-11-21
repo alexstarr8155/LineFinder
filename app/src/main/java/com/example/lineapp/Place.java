@@ -11,11 +11,25 @@ public class Place {
 
     public Place (String l, String n){
 
-        this.location = l;
-        this.name = n;
-        this.list = new ArrayList<>();
+        location = l;
+        name = n;
+        list = new ArrayList<>();
 
+        list.add("text");
     }
+
+
+    /*
+
+    ;; Place
+    * String, Nat, (listof Str)
+
+    (define-struct (Place location name list)
+
+    (make-place "test" 7 (list "t" "s"))
+
+
+     */
 
     public String getLocation() {
         return location;
