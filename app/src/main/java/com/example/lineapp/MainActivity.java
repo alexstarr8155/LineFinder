@@ -25,12 +25,12 @@ public class MainActivity extends AppCompatActivity {
         mListView = (ListView) findViewById(R.id.listView);
 
         ArrayList<Card> list = new ArrayList<>();
-        list.add(new Card("@drawable/arizona_dessert", "Arizona Desert"));
-        list.add(new Card("drawable://" + R.drawable.bamf1, "Bamf"));
+        list.add(new Card("@drawable/arizona_desert", "Arizona Desert", "Arizona", "5"));
+        list.add(new Card("drawable://" + R.drawable.bamf1, "Banff"));
         list.add(new Card("drawable://" + R.drawable.colorado_mountains, "Colorado Mountains"));
         list.add(new Card("drawable://" + R.drawable.cork, "Cork"));
         list.add(new Card("drawable://" + R.drawable.davenport_california, "DavenPort California"));
-        list.add(new Card("drawable://" + R.drawable.denmark_austrailia, "Denmark Austrailia"));
+        list.add(new Card("drawable://" + R.drawable.denmark_austrailia, "Denmark Australia"));
         list.add(new Card("drawable://" + R.drawable.foggy_iceland, "Foggy Iceland"));
         list.add(new Card("drawable://" + R.drawable.havasu_falls, "Havasu Falls"));
         list.add(new Card("drawable://" + R.drawable.hawaii_rainforest, "Hawaii RainForest"));

@@ -28,12 +28,11 @@
                 android:layout_width="125dp"
                 android:layout_height="100dp"
                 android:layout_marginEnd="24dp"
-                android:layout_marginRight="24dp"
                 android:scaleType="fitXY"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardTitle"
-                app:layout_constraintVertical_bias="0.363">
+                app:layout_constraintVertical_bias="0.204">
 
             </ImageView>
 
@@ -52,6 +51,36 @@
                 app:layout_constraintTop_toTopOf="parent">
 
             </TextView>
+
+            <TextView
+                android:id="@+id/field1"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_marginEnd="84dp"
+                android:text="Field One"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/cardImage"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/cardImage"
+                app:layout_constraintVertical_bias="0.072" />
+
+            <TextView
+                android:id="@+id/field2"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_marginEnd="92dp"
+                android:text="Field Two"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/cardImage"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="@id/field1"
+                app:layout_constraintStart_toStartOf="@+id/field1"
+                app:layout_constraintTop_toBottomOf="@+id/field1"
+                app:layout_constraintVertical_bias="0.101" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

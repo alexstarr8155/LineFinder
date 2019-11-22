@@ -19,6 +19,8 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class CustomListAdapter extends ArrayAdapter<Card> {
@@ -35,6 +37,8 @@ public class CustomListAdapter extends ArrayAdapter<Card> {
     private static class ViewHolder {
         TextView title;
         ImageView image;
+        TextView field1;
+        TextView field2;
     }
 
     /**
@@ -59,6 +63,8 @@ public class CustomListAdapter extends ArrayAdapter<Card> {
         //get the Card information
         String title = getItem(position).getTitle();
         String imgUrl = getItem(position).getImgURL();
+        String field1 = getItem(position).getField1();
+        String field2 = getItem(position).getField2();
 
         //create the view result for showing the animation
         final View result;
@@ -70,9 +76,12 @@ public class CustomListAdapter extends ArrayAdapter<Card> {
         if(convertView == null){
             LayoutInflater inflater = LayoutInflater.from(mContext);
             convertView = inflater.inflate(mResource, parent, false);
-            holder= new ViewHolder();
+            holder = new ViewHolder();
             holder.title = (TextView) convertView.findViewById(R.id.cardTitle);
             holder.image = (ImageView) convertView.findViewById(R.id.cardImage);
+
+            holder.field1 = (TextView) convertView.findViewById(R.id.field1);
+            holder.field2 = (TextView) convertView.findViewById(R.id.field2);
 
             result = convertView;
 
@@ -90,6 +99,8 @@ public class CustomListAdapter extends ArrayAdapter<Card> {
         lastPosition = position;
 
         holder.title.setText(title);
+        holder.field1.setText(field1);
+        holder.field2.setText(field2);
 
         //create the imageloader object
         ImageLoader imageLoader = ImageLoader.getInstance();
