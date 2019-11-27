@@ -23,7 +23,7 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
-public class CustomListAdapter extends ArrayAdapter<Card> {
+public class CustomListAdapter extends ArrayAdapter<Place> {
 
     private static final String TAG = "CustomListAdapter";
 
@@ -47,7 +47,7 @@ public class CustomListAdapter extends ArrayAdapter<Card> {
      * @param resource
      * @param objects
      */
-    public CustomListAdapter(Context context, int resource, ArrayList<Card> objects) {
+    public CustomListAdapter(Context context, int resource, ArrayList<Place> objects) {
         super(context, resource, objects);
         mContext = context;
         mResource = resource;
@@ -61,10 +61,10 @@ public class CustomListAdapter extends ArrayAdapter<Card> {
         setupImageLoader();
 
         //get the Card information
-        String title = getItem(position).getTitle();
-        String imgUrl = getItem(position).getImgURL();
-        String field1 = getItem(position).getField1();
-        String field2 = getItem(position).getField2();
+        String title = getItem(position).toCard().getTitle();
+        String imgUrl = getItem(position).toCard().getImgURL();
+        String field1 = getItem(position).toCard().getLocation();
+        String field2 = getItem(position).toCard().getWaitTime();
 
         //create the view result for showing the animation
         final View result;
