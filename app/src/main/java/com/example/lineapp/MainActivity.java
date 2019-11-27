@@ -16,11 +16,13 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listview_layout);
 
         //FeedbackNotification notification = new FeedbackNotification();
-        FeedbackNotification.notify(this, "Text", 1);
+        FeedbackNotification.notify(this, "Text HI", 1);
 
         mListView = (ListView) findViewById(R.id.listView);
 
