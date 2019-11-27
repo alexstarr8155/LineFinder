@@ -5,31 +5,22 @@ import java.util.ArrayList;
 
 public class Place {
 
+    public static int WAIT_TIME_AVG = 5;
+
     private String location;
     private String name;
-    private ArrayList<String> list;
+    private ArrayList<String> timeList;
+    private String imgUrl;
 
-    public Place (String l, String n){
+    public Place (String url, String n, String l){
 
-        location = l;
-        name = n;
-        list = new ArrayList<>();
+        this.imgUrl = url;
+        this.name = n;
+        this.location = l;
+        timeList = new ArrayList<>();
 
-        list.add("text");
+
     }
-
-
-    /*
-
-    ;; Place
-    * String, Nat, (listof Str)
-
-    (define-struct (Place location name list)
-
-    (make-place "test" 7 (list "t" "s"))
-
-
-     */
 
     public String getLocation() {
         return location;
@@ -48,11 +39,49 @@ public class Place {
     }
 
     public ArrayList<String> getList() {
-        return list;
+        return this.timeList;
     }
 
     public void setList(ArrayList<String> list) {
-        this.list = list;
+        this.timeList = list;
     }
+
+    public void addWaitTime (String time) {
+        this.timeList.add(time);
+    }
+
+    public ArrayList<String> getRecentElements (int numElements) {
+        int actual = numElements > this.getList().size()? 0 : this.getList().size() - numElements;
+        ArrayList<String> temp = new ArrayList<>();
+        for (int i = this.getList().size() - 1; i >= actual; i--) {
+            temp.add(this.getList().get(i));
+        }
+         return temp;
+    }
+
+    public float avgWaitTime (int numToCount) {
+        ArrayList<String> temp = getRecentElements(numToCount);
+        double sum = 0;
+        for (int i = 0; i < temp.size(); i++) {
+            sum += Integer.parseInt(temp.get(i));
+        }
+        return (float) (sum) / (float) numToCount;
+    }
+
+    public void removeOldData (int numToRemove) {
+        int actual = (numToRemove > this.getList().size())? this.getList().size() : numToRemove;
+        ArrayList<String> temp = new ArrayList<>();
+        for (int i = 0; i < actual; i++) {
+            this.getList().remove(i);
+        }
+
+    }
+
+    public Card toCard(){
+
+        return new Card(this.imgUrl, this.name, this.location, this.avgWaitTime(WAIT_TIME_AVG));
+
+    }
+
 }
 
