@@ -7,15 +7,16 @@ public class Place {
 
     private String location;
     private String name;
-    private ArrayList<String> list;
+    private ArrayList<String> timeList;
+
+
 
     public Place (String l, String n){
 
-        location = l;
-        name = n;
-        list = new ArrayList<>();
+        this.location = l;
+        this.name = n;
+        timeList = new ArrayList<>();
 
-        list.add("text");
     }
 
 
@@ -48,11 +49,43 @@ public class Place {
     }
 
     public ArrayList<String> getList() {
-        return list;
+        return this.timeList;
     }
 
     public void setList(ArrayList<String> list) {
-        this.list = list;
+        this.timeList = list;
     }
+
+    public void addWaitTime (String time) {
+        this.timeList.add(time);
+    }
+
+    public ArrayList<String> getRecentElements (int numElements) {
+        int actual = numElements > this.getList().size()? 0 : this.getList().size() - numElements;
+        ArrayList<String> temp = new ArrayList<>();
+        for (int i = this.getList().size() - 1; i >= actual; i--) {
+            temp.add(this.getList().get(i));
+        }
+         return temp;
+    }
+
+    public float avgWaitTime (int numToCount) {
+        ArrayList<String> temp = getRecentElements(numToCount);
+        double sum = 0;
+        for (int i = 0; i < temp.size(); i++) {
+            sum += Integer.parseInt(temp.get(i));
+        }
+        return (float) (sum) / (float) numToCount;
+    }
+
+    public void removeOldData (int numToRemove) {
+        int actual = (numToRemove > this.getList().size())? this.getList().size() : numToRemove;
+        ArrayList<String> temp = new ArrayList<>();
+        for (int i = 0; i < actual; i++) {
+            this.getList().remove(i);
+        }
+
+    }
+
 }
 

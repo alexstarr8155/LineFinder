@@ -4,18 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.ListView;
-import android.widget.Toast;
-import android.location.LocationListener;
-import android.location.LocationManager;
+
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-
-    // GPS
-    private LocationManager locationManager;
-    private LocationListener listener;
-
 
     private static final String TAG = "MainActivity";
 
@@ -46,11 +39,7 @@ public class MainActivity extends AppCompatActivity {
         list.add(new Card("drawable://" + R.drawable.stc_pic, "STC Tim Hortons"));
         list.add(new Card("drawable://" + R.drawable.yosemite, "Yosemite"));
 
-
         CustomListAdapter adapter = new CustomListAdapter(this, R.layout.activity_main, list);
         mListView.setAdapter(adapter);
-
-        // GPS service
-        locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
     }
 }
