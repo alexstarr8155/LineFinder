@@ -5,30 +5,30 @@ public class Card {
     private String imgURL;
     private String title;
 
-    private String field1;
-    private String field2;
+    private String location;
+    private String time;
 
     public Card(String imgURL, String title) {
         this.imgURL = imgURL;
         this.title = title;
-        this.field1 = "Field";
-        this.field2 = "Text";
+        this.location = "Field";
+        this.time = "Text";
     }
 
-    public String getField1() {
-        return field1;
+    public String getLocation() {
+        return location;
     }
 
-    public String getField2() {
-        return field2;
+    public String getWaitTime() {
+        return time;
     }
 
-    public Card(String imgURL, String title, String field1, String field2){
+    public Card(String imgURL, String title, String location, float time){
 
         this.imgURL = imgURL;
         this.title = title;
-        this.field1 = field1;
-        this.field2 = field2;
+        this.location = location;
+        this.time = "" + time;
 
     }
 
