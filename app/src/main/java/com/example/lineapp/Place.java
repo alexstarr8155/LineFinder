@@ -5,32 +5,22 @@ import java.util.ArrayList;
 
 public class Place {
 
+    public static int WAIT_TIME_AVG = 5;
+
     private String location;
     private String name;
     private ArrayList<String> timeList;
+    private String imgUrl;
 
+    public Place (String url, String n, String l){
 
-
-    public Place (String l, String n){
-
-        this.location = l;
+        this.imgUrl = url;
         this.name = n;
+        this.location = l;
         timeList = new ArrayList<>();
 
+
     }
-
-
-    /*
-
-    ;; Place
-    * String, Nat, (listof Str)
-
-    (define-struct (Place location name list)
-
-    (make-place "test" 7 (list "t" "s"))
-
-
-     */
 
     public String getLocation() {
         return location;
@@ -84,6 +74,12 @@ public class Place {
         for (int i = 0; i < actual; i++) {
             this.getList().remove(i);
         }
+
+    }
+
+    public Card toCard(){
+
+        return new Card(this.imgUrl, this.name, this.location, this.avgWaitTime(WAIT_TIME_AVG));
 
     }
 
