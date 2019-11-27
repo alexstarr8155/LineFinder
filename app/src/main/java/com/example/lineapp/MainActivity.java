@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.ListView;
-import android.widget.Toast;
+
 
 import java.util.ArrayList;
 
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         list.add(new Card("drawable://" + R.drawable.colorado_mountains, "Colorado Mountains"));
         list.add(new Card("drawable://" + R.drawable.cork, "Cork"));
         list.add(new Card("drawable://" + R.drawable.davenport_california, "DavenPort California"));
-        list.add(new Card("drawable://" + R.drawable.denmark_austrailia, "Denmark Australia"));
+        list.add(new Card("drawable://" + R.drawable.denmark_austrailia, "Denmark Austrailia"));
         list.add(new Card("drawable://" + R.drawable.foggy_iceland, "Foggy Iceland"));
         list.add(new Card("drawable://" + R.drawable.havasu_falls, "Havasu Falls"));
         list.add(new Card("drawable://" + R.drawable.hawaii_rainforest, "Hawaii RainForest"));
@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
         list.add(new Card("drawable://" + R.drawable.oregon_greens, "Oregon Greens"));
         list.add(new Card("drawable://" + R.drawable.stc_pic, "STC Tim Hortons"));
         list.add(new Card("drawable://" + R.drawable.yosemite, "Yosemite"));
-
 
         CustomListAdapter adapter = new CustomListAdapter(this, R.layout.activity_main, list);
         mListView.setAdapter(adapter);
