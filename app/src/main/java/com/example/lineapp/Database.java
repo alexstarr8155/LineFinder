@@ -13,7 +13,7 @@ public class Database {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     String output = "";
 
-    @Override
+    //@Override
     public void make_test(){
         DatabaseReference ref = database.getReference("something");
         ref.addValueEventListener(new ValueEventListener() {

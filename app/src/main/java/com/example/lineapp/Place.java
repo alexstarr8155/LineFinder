@@ -3,7 +3,7 @@ package com.example.lineapp;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class Place {
+public class Place implements Comparable{
 
     public static int WAIT_TIME_AVG = 5;
 
@@ -18,8 +18,6 @@ public class Place {
         this.name = n;
         this.location = l;
         timeList = new ArrayList<>();
-
-
     }
 
     public String getLocation() {
@@ -83,5 +81,15 @@ public class Place {
 
     }
 
+
+    @Override
+    public int compareTo(Object o) {
+
+        if (!(o instanceof Place)){
+            return 0;
+        }
+
+        return this.name.compareTo(((Place)o).name);
+    }
 }
 

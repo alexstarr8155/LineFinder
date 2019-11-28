@@ -9,7 +9,11 @@ import android.content.Context;
 import android.widget.ListView;
 
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,10 +28,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listview_layout);
 
+        ArrayList<String> list = new ArrayList<>();
+        list.add("test");
+        list.add("test1");
+
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
+        DatabaseReference ref = db.getReference("testpath");
+        ref.setValue(list);
+
         mListView = (ListView) findViewById(R.id.listView);
 
         PlaceList.init();
 
+        Collections.sort(PlaceList.places);
         CustomListAdapter adapter = new CustomListAdapter(this, R.layout.activity_main, PlaceList.places);
         mListView.setAdapter(adapter);
     }
