@@ -1,8 +1,11 @@
 package com.example.lineapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+import android.app.NotificationManager;
+import android.support.v4.app.NotificationCompat;
+import android.view.View;
+import android.content.Context;
 import android.widget.ListView;
 
 
@@ -21,9 +24,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listview_layout);
 
-        //FeedbackNotification notification = new FeedbackNotification();
-        FeedbackNotification.notify(this, "Text HI", 1);
-
         mListView = (ListView) findViewById(R.id.listView);
 
         PlaceList.init();
@@ -31,4 +31,20 @@ public class MainActivity extends AppCompatActivity {
         CustomListAdapter adapter = new CustomListAdapter(this, R.layout.activity_main, PlaceList.places);
         mListView.setAdapter(adapter);
     }
+
+//    public void sendNotification(View view) {
+//        //Get an instance of NotificationManager//
+//        NotificationCompat.Builder mBuilder =
+//                new NotificationCompat.Builder(this)
+//                        .setSmallIcon(R.drawable.notification_icon)
+//                        .setContentTitle("My notification")
+//                        .setContentText("Hello World!");
+//
+//
+//        // Gets an instance of the NotificationManager service//
+//        NotificationManager mNotificationManager =
+//                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+//        NotificationManager.notify().
+//                mNotificationManager.notify(001, mBuilder.build());
+//    }
 }
