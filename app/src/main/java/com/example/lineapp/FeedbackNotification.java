@@ -11,45 +11,19 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
-
 import androidx.core.app.NotificationCompat;
 
-/**
- * Helper class for showing and canceling feedback
- * notifications.
- * <p>
- * This class makes heavy use of the {@link NotificationCompat.Builder} helper
- * class to create notifications in a backward-compatible way.
- */
 public class FeedbackNotification {
-    /**
-     * The unique identifier for this type of notification.
-     */
+
     private static final String NOTIFICATION_TAG = "Feedback";
 
     /**
      * Shows the notification, or updates a previously shown notification of
-     * this type, with the given parameters.
-     * <p>
-     * TODO: Customize this method's arguments to present relevant content in
-     * the notification.
-     * <p>
-     * TODO: Customize the contents of this method to tweak the behavior and
-     * presentation of feedback notifications. Make
-     * sure to follow the
-     * <a href="https://developer.android.com/design/patterns/notifications.html">
-     * Notification design guidelines</a> when doing so.
-     *
-     * @see #cancel(Context)
+     * this type, with the given parameters
      */
     public static void notify(final Context context,
                               final String exampleString, final int number) {
         final Resources res = context.getResources();
-
-        // This image is used as the notification's large icon (thumbnail).
-        // TODO: Remove this if your notification has no relevant thumbnail.
-        final Bitmap picture = BitmapFactory.decodeResource(res, R.drawable.example_picture);
-
 
         final String ticker = exampleString;
         final String title = res.getString(
@@ -77,7 +51,7 @@ public class FeedbackNotification {
 
                 // Provide a large icon, shown with the notification in the
                 // notification drawer on devices running Android 3.0 or later.
-                .setLargeIcon(picture)
+                //.setLargeIcon()
 
                 // Set ticker text (preview) information for this notification.
                 .setTicker(ticker)
@@ -86,14 +60,8 @@ public class FeedbackNotification {
                 // a single type.
                 .setNumber(number)
 
-                // If this notification relates to a past or upcoming event, you
-                // should set the relevant time information using the setWhen
-                // method below. If this call is omitted, the notification's
-                // timestamp will by set to the time at which it was shown.
-                // TODO: Call setWhen if this notification relates to a past or
-                // upcoming event. The sole argument to this method should be
-                // the notification timestamp in milliseconds.
-                //.setWhen(...)
+                // The notification's timestamp in milliseconds.
+                //.setWhen()
 
                 // Set the pending intent to be initiated when the user touches
                 // the notification.
@@ -131,8 +99,10 @@ public class FeedbackNotification {
                         res.getString(R.string.action_reply),
                         null)
 
+                .setPriority(Notification.PRIORITY_MAX);
+
                 // Automatically dismiss the notification when it is touched.
-                .setAutoCancel(true);
+                //.setAutoCancel(true);
 
         notify(context, builder.build());
     }
