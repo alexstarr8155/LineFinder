@@ -3,7 +3,7 @@ package com.example.lineapp;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.app.NotificationManager;
-import android.support.v4.app.NotificationCompat;
+import androidx.core.app.NotificationCompat;
 import android.view.View;
 import android.content.Context;
 import android.widget.ListView;
@@ -32,19 +32,19 @@ public class MainActivity extends AppCompatActivity {
         mListView.setAdapter(adapter);
     }
 
-//    public void sendNotification(View view) {
-//        //Get an instance of NotificationManager//
-//        NotificationCompat.Builder mBuilder =
-//                new NotificationCompat.Builder(this)
-//                        .setSmallIcon(R.drawable.notification_icon)
-//                        .setContentTitle("My notification")
-//                        .setContentText("Hello World!");
-//
-//
-//        // Gets an instance of the NotificationManager service//
-//        NotificationManager mNotificationManager =
-//                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-//        NotificationManager.notify().
-//                mNotificationManager.notify(001, mBuilder.build());
-//    }
+    public void sendNotification(View view) {
+        //Get an instance of NotificationManager//
+        NotificationCompat.Builder mBuilder =
+                new NotificationCompat.Builder(this)
+                        .setSmallIcon(R.drawable.bamf1) // random icon
+                        .setContentTitle("My notification")
+                        .setContentText("please work");
+
+
+        // Gets an instance of the NotificationManager service//
+        NotificationManager mNotificationManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        //NotificationManager.notify().
+        //        mNotificationManager.notify(001, mBuilder.build());
+    }
 }
