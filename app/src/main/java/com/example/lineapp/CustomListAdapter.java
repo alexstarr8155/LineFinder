@@ -22,6 +22,7 @@ import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class CustomListAdapter extends ArrayAdapter<Place> {
 
@@ -139,4 +140,5 @@ public class CustomListAdapter extends ArrayAdapter<Place> {
         ImageLoader.getInstance().init(config);
         // END - UNIVERSAL IMAGE LOADER SETUP
     }
+
 }
