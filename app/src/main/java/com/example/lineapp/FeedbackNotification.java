@@ -31,7 +31,7 @@ public class FeedbackNotification {
         final String text = res.getString(
                 R.string.feedback_notification_placeholder_text_template, exampleString);
 
-        final NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
 
                 // Set appropriate defaults for the notification light, sound,
                 // and vibration.
@@ -132,4 +132,9 @@ public class FeedbackNotification {
             nm.cancel(NOTIFICATION_TAG.hashCode());
         }
     }
+
+
+
+
+
 }

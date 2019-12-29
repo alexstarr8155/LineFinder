@@ -1,6 +1,11 @@
 package com.example.lineapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.NotificationChannel;
+import android.app.PendingIntent;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.app.NotificationManager;
 import androidx.core.app.NotificationCompat;
@@ -50,25 +55,41 @@ public class MainActivity extends AppCompatActivity {
         CustomListAdapter adapter = new CustomListAdapter(this, R.layout.activity_main, PlaceList.places);
         mListView.setAdapter(adapter);
 
-        locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-        locationManager.requestLocationUpdates(LocationManager
-                .GPS_PROVIDER, 5000, 10,locationListener);
-        locationListener = new MyLocationListener();
+        //locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+        //locationManager.requestLocationUpdates(LocationManager
+          //      .GPS_PROVIDER, 5000, 10,locationListener);
+        //locationListener = new MyLocationListener();
     }
 
-    public void sendNotification(View view) {
-        //Get an instance of NotificationManager//
-        NotificationCompat.Builder mBuilder =
-                new NotificationCompat.Builder(this)
-                        .setSmallIcon(R.drawable.bamf1) // random icon
-                        .setContentTitle("My notification")
-                        .setContentText("please work");
+    private void showNotification(String message){
+
+        Intent notifIntent = new Intent(this, MainActivity.class);
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notifIntent, 0);
 
 
-        // Gets an instance of the NotificationManager service//
-        NotificationManager mNotificationManager =
-                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        //NotificationManager.notify().
-        //        mNotificationManager.notify(001, mBuilder.build());
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this,"default")
+                .setSmallIcon(android.R.drawable.ic_dialog_info)
+                .setContentTitle("Notification Title")
+                .setContentText(message)
+                .setDefaults(NotificationCompat.DEFAULT_ALL)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setContentIntent(contentIntent);
+
+        NotificationManager notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            builder.setChannelId("YOUR_PACKAGE_NAME");
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel(
+                    "YOUR_PACKAGE_NAME",
+                    "YOUR_APP_NAME",
+                    NotificationManager.IMPORTANCE_DEFAULT
+            );
+            if (notificationManager != null) {
+                notificationManager.createNotificationChannel(channel);
+            }
+        }
+        notificationManager.notify(0 , builder.build());
     }
 }
