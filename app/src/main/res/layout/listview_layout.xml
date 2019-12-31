@@ -9,4 +9,6 @@
         android:divider="@color/listviewBackground"
         android:dividerHeight="5dp"
         android:id="@+id/listView"/>
+
+
 </LinearLayout>

@@ -12,11 +12,11 @@ public class Place implements Comparable{
     private ArrayList<String> timeList;
     private String imgUrl;
 
-    public Place (String url, String n, String l){
+    public Place (String url, String name, String location){
 
         this.imgUrl = url;
-        this.name = n;
-        this.location = l;
+        this.name = name;
+        this.location = location;
         timeList = new ArrayList<>();
     }
 
