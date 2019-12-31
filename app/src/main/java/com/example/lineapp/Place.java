@@ -16,7 +16,7 @@ public class Place implements Comparable{
 
         this.imgUrl = url;
         this.name = name;
-        this.location = location;
+        this.location = location; // Location must be of the format latitude + MainActivity.standardDelimiter + longitude
         timeList = new ArrayList<>();
     }
 
@@ -75,6 +75,13 @@ public class Place implements Comparable{
 
     }
 
+    public static double distanceBetweenTwoPlaces(Place p1, Place p2) {
+        String[] p1Arr = p1.getLocation().split(MainActivity.standardDelimiter);
+        String[] p2Arr = p2.getLocation().split(MainActivity.standardDelimiter);
+        return Math.hypot(Double.parseDouble(p1Arr[0])- Double.parseDouble(p2Arr[0]), Double.parseDouble(p1Arr[1]) - Double.parseDouble(p2Arr[1]));
+    }
+
+
     public Card toCard(){
 
         return new Card(this.imgUrl, this.name, this.location, this.avgWaitTime(WAIT_TIME_AVG));
@@ -89,7 +96,8 @@ public class Place implements Comparable{
             return 0;
         }
 
-        return this.name.compareTo(((Place)o).name);
+
+        return (int) Math.round(distanceBetweenTwoPlaces(this, (Place) o));
     }
 }
 

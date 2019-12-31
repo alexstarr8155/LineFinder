@@ -223,6 +223,9 @@ public class MainActivity extends AppCompatActivity
     public void onLocationChanged(Location location) {
         if (location != null) {
             MainActivity.phoneLocation = location.getLatitude() + MainActivity.standardDelimiter + location.getLongitude();
+            if (PlaceList.isNearbyOne(MainActivity.phoneLocation) != null) {
+                showNotification("You are nearby " + PlaceList.isNearbyOne(MainActivity.phoneLocation).getName() + ". How busy is it?");
+            }
             //locationTv.setText("Latitude : " + location.getLatitude() + "\nLongitude : " + location.getLongitude());
             //Log.e("tag", "Latitude : " + location.getLatitude() + "\nLongitude : " + location.getLongitude());
         }
@@ -284,7 +287,7 @@ public class MainActivity extends AppCompatActivity
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this,"default")
                 .setSmallIcon(android.R.drawable.ic_dialog_info)
-                .setContentTitle("Notification Title")
+                .setContentTitle("Line Tracker")
                 .setContentText(message)
                 .setDefaults(NotificationCompat.DEFAULT_ALL)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
