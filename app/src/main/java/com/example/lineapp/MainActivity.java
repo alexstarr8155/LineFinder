@@ -281,7 +281,7 @@ public class MainActivity extends AppCompatActivity
 
     private void showNotification(String message){
 
-        Intent notifIntent = new Intent(this, MainActivity.class);
+        Intent notifIntent = new Intent(this, FeedbackNotification.class);
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notifIntent, 0);
 
 

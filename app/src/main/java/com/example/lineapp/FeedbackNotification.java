@@ -1,6 +1,7 @@
 package com.example.lineapp;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -11,9 +12,35 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.SeekBar;
+
+import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
-public class FeedbackNotification {
+public class FeedbackNotification extends Activity {
+
+    public SeekBar seekBar;
+    public Button button;
+    public static int busyness;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.notification);
+        seekBar = findViewById(R.id.seekBar);
+        button = findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                busyness = seekBar.getProgress();
+                finish();
+            }
+        });
+
+    }
 
     private static final String NOTIFICATION_TAG = "Feedback";
 
